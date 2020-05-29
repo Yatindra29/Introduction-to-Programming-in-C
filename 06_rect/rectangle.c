@@ -48,7 +48,8 @@ rectangle xcheckmin(rectangle r1, rectangle r2)
 {
   if(r1.x<r2.x)
     return r1;
-  else return r2;
+  else
+  return r2;
 }
 rectangle ycheckmax(rectangle r1,rectangle r2)
 {
@@ -82,7 +83,7 @@ rectangle intersection(rectangle r1, rectangle r2) {
     {
       r.x=xmax.x;
       r.y=ymax.y;
-   if((xmin.width+xmin.x>xmax.x+xmax.width) && (ymin.height+ymin.y>ymax.y+ymax.height))
+   if((xmin.width+xmin.x>=xmax.x+xmax.width) && (ymin.height+ymin.y>=ymax.y+ymax.height))
 	{
 	  r.width=xmax.width;
 	  r.height=ymax.height;
