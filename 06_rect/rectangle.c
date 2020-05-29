@@ -83,7 +83,7 @@ rectangle intersection(rectangle r1, rectangle r2) {
     {
       r.x=xmax.x;
       r.y=ymax.y;
-   if((xmin.width+xmin.x>=xmax.x+xmax.width) && (ymin.height+ymin.y>=ymax.y+ymax.height))
+      if(((xmin.width+xmin.x)>=(xmax.x+xmax.width)) && ((ymin.height+ymin.y)>=(ymax.y+ymax.height)))
 	{
 	  r.width=xmax.width;
 	  r.height=ymax.height;
