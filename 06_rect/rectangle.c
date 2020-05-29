@@ -14,17 +14,103 @@ int max (int a, int b) {
   }
   return b;
 }
-
+struct rect_tag{
+  int x;
+  int y;
+  int width;
+  int height;
+};
+typedef struct rect_tag rectangle;
 //Declare your rectangle structure here!
 
 
 rectangle canonicalize(rectangle r) {
-  //WRITE THIS FUNCTION
+  if(r.width<0)
+    {
+      r.x=r.x + r.width;
+      r.width= r.width * (-1);
+    }
+   if(r.height<0)
+    {
+      r.y=r.y +r.height;
+      r.height=r.height * (-1);
+    }//WRITE THIS FUNCTION
   return r;
 }
+rectangle xcheckmax(rectangle r1,rectangle r2)
+{
+  if(r1.x>r2.x)
+    return r1;
+  else
+    return r2;
+}
+rectangle xcheckmin(rectangle r1, rectangle r2)
+{
+  if(r1.x<r2.x)
+    return r1;
+  else return r2;
+}
+rectangle ycheckmax(rectangle r1,rectangle r2)
+{
+  if(r1.y>r2.y)
+    return r1;
+  else
+    return r2;
+}
+rectangle ycheckmin(rectangle r1,rectangle r2)
+{
+  if(r1.y<r2.y)
+    return r1;
+  else
+    return r2;
+}
 rectangle intersection(rectangle r1, rectangle r2) {
-  //WRITE THIS FUNCTION
-  return r1;
+  r1= canonicalize(r1);
+  r2=canonicalize(r2);
+  rectangle r;
+  int differencex= r1.x - r2.x;
+  int differencey=r1.y-r2.y;//WRITE THIS FUNCTION
+  if(differencex<0)
+    differencex=differencex*(-1);
+  if(differencey<0)
+    differencey=differencey*(-1);
+  rectangle xmax=xcheckmax(r1,r2);
+  rectangle xmin=xcheckmin(r1,r2);
+  rectangle ymax=ycheckmax(r1,r2);
+  rectangle ymin=ycheckmin(r1,r2);
+  if(differencex<xmin.width && differencey<ymin.height)
+    {
+      r.x=xmax.x;
+      r.y=ymax.y;
+     if(xmin.width+xmin.x> xmax.width+xmax.x && ymin.height+ymin.y> ymax.height+ymax.y)
+	{
+	  r.width=xmax.width;
+	  r.height=ymax.height;
+	}
+     else {
+      r.width=xmin.width-(xmax.x-xmin.x);
+      r.height=ymin.height-(ymax.y-ymin.y);
+     }}
+  else if(differencex>xmin.width || differencey>ymin.height)
+    {
+      r.width=0;
+      r.height=0;
+    }
+  else if(differencex==r1.width || differencex==r2.width)
+    {
+      r.width=0;
+      r.height=ymin.height-(ymax.y-ymin.y);
+      r.x=max(r1.x ,r2.x);
+      r.y=max(r1.y ,r2.y);
+    }
+  else if(differencey==r1.height || differencey==r2.height)
+    {
+      r.height=0;
+      r.width=xmin.width-(xmax.x-xmin.x);
+      r.x=max(r1.x, r2.x);
+      r.y=max(r1.y, r2.y);
+    }
+	  return r;
 }
 
 //You should not need to modify any code below this line
