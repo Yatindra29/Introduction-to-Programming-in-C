@@ -68,22 +68,18 @@ rectangle ycheckmin(rectangle r1,rectangle r2)
 rectangle intersection(rectangle r1, rectangle r2) {
   r1= canonicalize(r1);
   r2=canonicalize(r2);
-  rectangle r;
-  int differencex= r1.x - r2.x;
-  int differencey=r1.y-r2.y;//WRITE THIS FUNCTION
-  if(differencex<0)
-    differencex=differencex*(-1);
-  if(differencey<0)
-    differencey=differencey*(-1);
+  rectangle r;//WRITE THIS FUNCTION
   rectangle xmax=xcheckmax(r1,r2);
   rectangle xmin=xcheckmin(r1,r2);
   rectangle ymax=ycheckmax(r1,r2);
   rectangle ymin=ycheckmin(r1,r2);
+  int differencex=xmax.x -xmin.x;
+  int differencey=ymax.y-ymin.y;
   if(differencex<xmin.width && differencey<ymin.height)
     {
       r.x=xmax.x;
       r.y=ymax.y;
-      if((xmax.x +xmax.width > xmin.x +xmin.width) &&( ymax.y +ymax.height > ymin.y+ ymin.height))
+      if((xmax.x +xmax.width > xmin.x +xmin.width) ||( ymax.y +ymax.height > ymin.y+ ymin.height))
 	{
 	  r.width=xmin.width-(xmax.x-xmin.x);
 	  r.height=ymin.height-(ymax.y-ymin.y);
@@ -97,14 +93,14 @@ rectangle intersection(rectangle r1, rectangle r2) {
       r.width=0;
       r.height=0;
     }
-  else if(differencex==r1.width || differencex==r2.width)
+  else if(differencex==xmin.width)
     {
       r.width=0;
       r.height=ymin.height-(ymax.y-ymin.y);
       r.x=max(r1.x ,r2.x);
       r.y=max(r1.y ,r2.y);
     }
-  else if(differencey==r1.height || differencey==r2.height)
+  else if(differencey==ymin.height)
     {
       r.height=0;
       r.width=xmin.width-(xmax.x-xmin.x);
