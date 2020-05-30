@@ -39,28 +39,28 @@ rectangle canonicalize(rectangle r) {
 }
 rectangle xcheckmax(rectangle r1,rectangle r2)
 {
-  if(r1.x>r2.x)
+  if(r1.x>=r2.x)
     return r1;
   else
     return r2;
 }
 rectangle xcheckmin(rectangle r1, rectangle r2)
 {
-  if(r1.x<r2.x)
+  if(r1.x<=r2.x)
     return r1;
   else
   return r2;
 }
 rectangle ycheckmax(rectangle r1,rectangle r2)
 {
-  if(r1.y>r2.y)
+  if(r1.y>=r2.y)
     return r1;
   else
     return r2;
 }
 rectangle ycheckmin(rectangle r1,rectangle r2)
 {
-  if(r1.y<r2.y)
+  if(r1.y<=r2.y)
     return r1;
   else
     return r2;
