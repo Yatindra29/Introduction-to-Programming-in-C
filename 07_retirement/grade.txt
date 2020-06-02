@@ -1,0 +1,10 @@
+Grading at Tue Jun  2 16:50:23 UTC 2020
+Attempting to compile retirement.c
+retirement.c: In function ‘retirement’:
+retirement.c:35:10: error: unused variable ‘balance2’ [-Werror=unused-variable]
+   double balance2=compute(retired,balance1,req);
+          ^
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
