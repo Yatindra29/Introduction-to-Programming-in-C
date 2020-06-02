@@ -29,10 +29,12 @@ double compute(retire_info r, double balance,int starting_age)
 void retirement(int startAge, double initial, retire_info working,retire_info retired)
 {
   int r_age=startAge+1;
-  double balance1=compute(working, initial,r_age);
+ double balance1= compute(working, initial,r_age);
   int req=startAge+working.months+1;
   retired.months=retired.months-1;
-  double balance2=compute(retired,balance1,req);
+ double balance2=compute(retired,balance1,req);
+ if(balance2<0)
+   printf("balance2");
 }
 int main(void){
   retire_info Working;
