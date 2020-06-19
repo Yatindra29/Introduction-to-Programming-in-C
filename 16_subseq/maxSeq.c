@@ -9,9 +9,9 @@ size_t maxSeq(int *array, size_t n)
   else
     {
  size_t count=1;
-  for(size_t i=0;i<n;i++)
+  for(size_t i=0;i<n-1;i++)
     { count=1;
-      for(size_t j=i;j<n;j++)
+      for(size_t j=i;j<n-1;j++)
 	{
 	  if(array[j]<array[j+1])
 	    {
