@@ -1,0 +1,9 @@
+Grading at Fri Jun 19 16:57:29 UTC 2020
+Attempting to compile maxSeq.c 
+maxSeq.c: In function ‘maxSeq’:
+maxSeq.c:18:15: error: expected ‘;’ before ‘:’ token
+        count++:
+               ^
+The code did not compile!
+
+Overall Grade: F
