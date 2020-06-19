@@ -3,15 +3,15 @@
 
 size_t maxSeq(int *array, size_t n)
 {
- size_t max=1;
+ int max=1;
   if(n==0)
     max=0;
   else
     {
- size_t count=0;
-  for(size_t i=0;i<n;i++)
+ int count=0;
+  for(int i=0;i<n;i++)
     { count=0;
-      for(size_t j=i;j<n-1;j++)
+      for(int j=i;j<n-1;j++)
 	{
 	  if(array[j]<array[j+1])
 	    {
