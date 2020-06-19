@@ -15,7 +15,7 @@ size_t maxSeq(int *array, size_t n)
 	{
 	  if(array[j]<array[j+1])
 	    {
-	      count++:
+	      count++;
 	    }}
 	  if(count>max)
 	    max=count;
