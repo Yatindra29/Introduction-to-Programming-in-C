@@ -3,18 +3,25 @@
 #include <string.h>
 
 void reverse(char * str) {
-  size_t len=strlen(str);//WRITE ME!
-  char rev[1000]="";
-  size_t j=0;
-  if(len!=0)
+  if(str==NULL)
     {
+    return;
+    }
+  else
+    {
+  size_t len=strlen(str);
+  if(len!=0)//WRITE ME!
+    {
+  char rev[len];
+  size_t j=0;
   for(size_t i=len-1;i>=0;i--)
     {
       rev[j]=str[i];
       j++;
-    }}
-  str=rev;
-}
+    }
+  char *pec=rev;
+  str=pec;
+    }}}
 int main(void) {
   char str0[] = "";
   char str1[] = "123";
