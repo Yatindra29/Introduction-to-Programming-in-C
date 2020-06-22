@@ -6,22 +6,20 @@ void reverse(char * str) {
   if(str==NULL)
     {
     return;
-    }
+    }//WRITE ME!
   else
     {
-  size_t len=strlen(str);
-  if(len!=0)//WRITE ME!
-    {
-  char rev[len];
-  size_t j=0;
-  for(size_t i=len-1;i>=0;i--)
-    {
-      rev[j]=str[i];
-      j++;
-    }
-  char *pec=rev;
-  str=pec;
-    }}}
+      size_t len=strlen(str);
+      if(len!=0)
+	{
+	  int j=len-1;
+	  for(int i=0;i<len/2;i++)
+	    {
+	      char t=str[i];
+	      str[i]=str[j];
+	      str[j]=t;
+	      j--;
+	    }}}}
 int main(void) {
   char str0[] = "";
   char str1[] = "123";
