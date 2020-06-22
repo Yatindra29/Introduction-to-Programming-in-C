@@ -1,0 +1,23 @@
+Grading at Mon Jun 22 09:58:28 UTC 2020
+Attempting to compile  reverse.c
+Your file did not match the expected ouput
+Your output did not match what we expected.
+Removing your main() and replacing it with our own to run more tests...
+#################################################
+testcase2:
+ - Your program segfaulted.
+your code failed the testcase
+#################################################
+testcase3:
+Your file did not match the expected ouput
+your code failed the testcase
+#################################################
+testcase4:
+Your file did not match the expected ouput
+your code failed the testcase
+#################################################
+testcase5:
+Your file did not match the expected ouput
+your code failed the testcase
+
+Overall Grade: F
