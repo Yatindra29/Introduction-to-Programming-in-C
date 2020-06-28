@@ -38,9 +38,10 @@ void shuffle(deck_t * d){
   card_t temp;
   card_t *p;
   card_t *r;
+  size_t n;
   for(i=0;i<=num/4;i++)
     {
-      size_t n=(rand() % num);
+      n=(rand() % num);
       p=(*d).cards[i];
       r=(*d).cards[n];
       temp=*p;
