@@ -55,18 +55,9 @@ void shuffle(deck_t * d){
 void assert_full_deck(deck_t * d) {
   size_t i=0;
   size_t n=(*d).n_cards;
-  int count=0;
-  card_t searched;
-  card_t *p;
-  int ch;
   for(i=0;i<n;i++)
     {
-      count=0;
-      p=(*d).cards[i];
-      searched=*p;
-      ch=deck_contains(d,searched);
-      count+=ch;
-      assert(count<2);
+      assert(deck_contains(d,card_from_num(i)));
 }
 }
 
