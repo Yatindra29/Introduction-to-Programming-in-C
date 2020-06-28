@@ -27,7 +27,10 @@ int deck_contains(deck_t * d, card_t c) {
       poin=(*d).cards[i];
       card_req=*poin;
       if(card_req.value == c.value && card_req.suit==c.suit)
-	return 1;
+	{
+	  return 1;
+	  break;
+	}
     }
   return 0;
 }
