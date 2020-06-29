@@ -6,7 +6,7 @@
 void print_hand(deck_t * hand){
   size_t i=0;
   size_t len=(*hand).n_cards;
-  card_t *ke;
+  card_t *ke=NULL;
   card_t k;
   for(i=0;i<len;i++)
     {
@@ -20,7 +20,7 @@ void print_hand(deck_t * hand){
 int deck_contains(deck_t * d, card_t c) {
   size_t i=0;
   size_t len=(*d).n_cards;
-  card_t *poin;
+  card_t *poin=NULL;
   card_t card_req;
   for(i=0;i<len;i++)
     {
@@ -39,8 +39,8 @@ void shuffle(deck_t * d){
   size_t num=(*d).n_cards;
   size_t i=0;
   card_t temp;
-  card_t *p;
-  card_t *r;
+  card_t *p=NULL;
+  card_t *r=NULL;
   size_t n;
   for(i=0;i<=num/4;i++)
     {
