@@ -10,20 +10,15 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
   const card_t * cp2=*cpp2;
   unsigned c1=(*cp1).value;
   unsigned c2=(*cp2).value;
-  unsigned result=c1-c2;
-  if(result>0)
-    return 1;
-  else if(result <0)
-    return -1;
+  unsigned result=c2-c1;
+  if(result!=0)
+    return result;
   else
     {
       suit_t s1=(*cp1).suit;
       suit_t s2=(*cp2).suit;
-      unsigned res=s1-s2;
-      if(res>0)
-	return -1;
-      else if(res<0)
-	return 1;
+      unsigned res=s2-s1;
+	return res;
     }
   return 0;
 }
