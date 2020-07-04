@@ -12,9 +12,9 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
   unsigned c2=(*cp2).value;
   unsigned result=c1-c2;
   if(result>0)
-    return -1;
-  else if(result <0)
     return 1;
+  else if(result <0)
+    return -1;
   else
     {
       suit_t s1=(*cp1).suit;
