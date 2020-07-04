@@ -4,28 +4,26 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  const card_t * const * cpp1=vp1;
-  const card_t * const * cpp2=vp2;
+  const card_t * const * cpp1=(const card_t * const *) vp1;
+  const card_t * const * cpp2=(const card_t * const *) vp2;
   const card_t * cp1=*cpp1;
   const card_t * cp2=*cpp2;
   unsigned c1=(*cp1).value;
   unsigned c2=(*cp2).value;
   unsigned result=c1-c2;
   if(result>0)
-    return 1;
-  else if(result <0)
     return -1;
+  else if(result <0)
+    return 1;
   else
     {
       suit_t s1=(*cp1).suit;
       suit_t s2=(*cp2).suit;
       unsigned res=s1-s2;
       if(res>0)
-	return 1;
-      else if(res<0)
 	return -1;
-      else
-	return 0;
+      else if(res<0)
+	return 1;
     }
   return 0;
 }
@@ -72,6 +70,7 @@ unsigned get_largest_element(unsigned * arr, size_t n) {
       if(arr[i]>max)
 	max=arr[i];
     }
+  if(max!=0)
   return max;
   return 0;
 }
@@ -83,7 +82,7 @@ size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
       if(match_counts[i]==n_of_akind)
 	{
 	  tbr=i;
-	  return i;
+	  return tbr;
 	  break;
 	}}
   assert(tbr!=-1);
@@ -93,20 +92,20 @@ ssize_t  find_secondary_pair(deck_t * hand,
 			     unsigned * match_counts,
 			     size_t match_idx) {
   size_t num=(*hand).n_cards;
-  size_t i=match_idx+match_counts[match_idx];
-  size_t j=i;
-  card_t *k=NULL;
+  ssize_t i=match_idx+match_counts[match_idx];
+  ssize_t j=i;
+  card_t *k;
   card_t ke;
   card_t *l=(*hand).cards[match_idx];
   card_t multi=*l;
-  for(j=i;i<num;i++)
+  for(j=i;j<num;j++)
     {
       k=(*hand).cards[j];
       ke=*k;
       if((match_counts[j]>1) && (ke.value!=multi.value))
 	{
-	return j;
-	break;
+	  return j;
+	  break;
 	}}
   return -1;
 }
@@ -114,35 +113,37 @@ ssize_t  find_secondary_pair(deck_t * hand,
 int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
 {
   size_t num=(*hand).n_cards;
-  size_t i=0;
+  size_t i=index;
   size_t j=0;
   card_t * ca=NULL;
   card_t * cb=NULL;
   card_t card1;
   card_t card2;
-  int count=0;
-  for(i=index;i<num-2;i++)
-    {
-      count=0;
+  int straight=0;
+  int als=0;
       for(j=i;j<num-1;j++)
 	{
-	  ca=(*hand).cards[i];
+	  ca=(*hand).cards[j];
 	  card1=*ca;
-	  cb=(*hand).cards[i+1];
+	  cb=(*hand).cards[j+1];
 	  card2=*cb;
 	  if(card1.value==card2.value)
 	    continue;
 	  else
 	    {
 	      if(card1.value-card2.value==1)
-		count++;
+		{
+		straight++;
+		if(card1.suit==fs && card2.suit==fs)
+		  als++;
+		}
 	      else
 		break;
 	    }}
-      if(count==n)
+      if(straight==n && als==n )
+	return -1;
+      else if(straight ==n && als!=n)
 	return 1;
-      break;
-    }
   return 0;
 }
 int check_for_ace_low_straight(deck_t * hand,size_t index, suit_t fs,int n)
@@ -153,22 +154,30 @@ int check_for_ace_low_straight(deck_t * hand,size_t index, suit_t fs,int n)
     return 0;
   else
     {
+      size_t i=0;
       size_t tempindex=index+1;
-      int ret=check_for_straight(hand,tempindex,fs,4);
-      if(ret==1)
+      card_t *ii;
+      card_t it;
+      for(i=tempindex;i<(*hand).n_cards;i++)
+	{
+	  ii=(*hand).cards[i];
+	  it=*ii;
+	  if(it.value==5 && it.suit==gh.suit)
+	    { int ret=check_for_straight(hand,tempindex,gh.suit,4);
+      if(ret==-1)
 	return -1;
-      else
+	    }}}
 	return 0;
-    }}
+}
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   if(fs==NUM_SUITS)
     {
-      int res1=check_for_straight(hand,index,fs,5);
+      int res1=check_for_straight(hand,index,NUM_SUITS,5);
       if(res1==1)
 	{return 1;}
       else
-	{int res2=check_for_ace_low_straight(hand,index,fs,4);
-      if(res2==1)
+	{int res2=check_for_ace_low_straight(hand,index,NUM_SUITS,4);
+      if(res2==-1)
 	return -1;
 	}}
   else
@@ -178,7 +187,7 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
 	{return 1;}
       else
 	{int res4=check_for_ace_low_straight(hand,index,fs,4);
-      if(res4==1)
+      if(res4==-1)
 	return -1;
 	}}
   return 0;
@@ -188,73 +197,34 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
 				  hand_ranking_t what,
 				  size_t idx) {
-
   hand_eval_t ans;
   ans.ranking=what;
   size_t limit=idx+n;
-  card_t *tbd=NULL;
-  card_t *tbe=NULL;
-  card_t tcard;
-  card_t fcard;
   size_t j=0;
-  for(size_t i=idx;i<limit;i++)
+  size_t i=0;
+  for(i=idx;i<limit;i++)
     {
-      tbd=(*hand).cards[i];
-      tcard=*tbd;
-      tbe=(ans).cards[j];
-      *tbe=tcard;
+      ans.cards[j]=(*hand).cards[i];
       j++;
     }
-  size_t i=0;
-  size_t k=0;
-  size_t index1=0;
-  size_t index2=0;
-  for(i=0;i<(*hand).n_cards;i++)
+  for(size_t p=0;p<idx;p++)
     {
-      if(i>= idx && i<limit)
-	continue;
-      else
-	tbd=(*hand).cards[i];
-      tcard=*tbd;
-	for(k=i+1;k<(*hand).n_cards;k++)
-	  {
-	    tbe=(*hand).cards[k];
-	    fcard=*tbe;
-	    if(tcard.value==fcard.value)
-	      {
-		index1=i;
-		index2=k;
-		break;
-	      }}}
-  if(index1!=0 && index2!=0)
-    {
-      card_t *tq=(ans).cards[j];
-      card_t *tw=(ans).cards[j+1];
-      card_t *te=(*hand).cards[index1];
-      card_t *tr=(*hand).cards[index2];
-      *tq=*te;
-      *tw=*tr;
-    }
-  else
-    {
-      card_t *tby=NULL;
-      card_t *tbc=NULL;
-      for(size_t y=0;y<(*hand).n_cards;y++)
-	{
-	  if(y>=idx && y<limit)
-	    continue;
-	  else
+	  if(j<5)
 	    {
-	      tby=(*hand).cards[y];
-	      tbc=(ans).cards[j];
-	      *tbc=*tby;
+	      ans.cards[j]=(*hand).cards[p];
 	      ++j;
-	      if(j==5)
-		break;
-	    }}}
+	    }}
+  if(j<5)
+    {
+  for(size_t q=limit;q<(*hand).n_cards;q++)
+    {
+      if(j<5)
+	{
+	  ans.cards[j]=(*hand).cards[q];
+	  ++j;
+	}}}
   return ans;
 }
-
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
@@ -262,9 +232,9 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   hand_eval_t h1=evaluate_hand(hand1);
   hand_eval_t h2=evaluate_hand(hand2);
   if((h1).ranking>(h2).ranking)
-    return 1;
-  else if((h1).ranking<(h2).ranking)
     return -1;
+  else if((h1).ranking<(h2).ranking)
+    return 1;
   else
     {
       size_t i=0;
