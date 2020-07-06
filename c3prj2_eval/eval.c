@@ -45,13 +45,13 @@ suit_t flush_suit(deck_t * hand) {
       else if(card.suit==DIAMONDS)
 	di++;
     }
-  if(sp==5)
+  if(sp>=5)
     return SPADES;
-  else if(cl==5)
+  else if(cl>=5)
     return CLUBS;
-  else if(he==5)
+  else if(he>=5)
     return HEARTS;
-  else if(di==5)
+  else if(di>=5)
     return DIAMONDS;
       else
   return NUM_SUITS;
