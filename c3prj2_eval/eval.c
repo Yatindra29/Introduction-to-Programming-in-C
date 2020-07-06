@@ -114,7 +114,7 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
   card_t *second;
   card_t card1;
   card_t card2;
-  for(size_t i=index;i<num-2;i++)
+  for(size_t i=index;i<=num-2;i++)
     {
       if(straight==n && ace_low_straight!=n)
 	{
@@ -161,7 +161,7 @@ int check_for_ace_low_straight(deck_t * hand,size_t index, suit_t fs)
 	{
 	  pp=(*hand).cards[j];
 	  c=*pp;
-	  if(c.value==5)
+	  if(c.value==5 && c.suit==ca.suit)
 	    {
 	      check=check_for_straight(hand,j,ca.suit,4);
 	      break;
@@ -189,15 +189,19 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
             }}}
   else
     {
+      card_t *pu;
+      card_t p;
+      pu=(*hand).cards[index];
+      p=*pu;
       //check for straight-flush
-      int res3=check_for_straight(hand,index,fs,5);
+      int res3=check_for_straight(hand,index,p.suit,5);
 	if(res3==1)
 	  {
 	    return 1;
 	  }
 	else
 	  {
-	    int res4=check_for_ace_low_straight(hand,index,fs);
+	    int res4=check_for_ace_low_straight(hand,index,p.suit);
 	    if(res4==-1)
 	      return -1;
 	  }}
