@@ -149,7 +149,7 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
 	    continue;
 	  if(k.value-fcard.value==1){
 	    count++;
-	    fc=(*hand).cards[j];
+	    kk=(*hand).cards[j];
 	  }}
       if(count==n-1)
 	return 1;
