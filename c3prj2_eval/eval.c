@@ -153,9 +153,9 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
 	    count++;
 	    kk=(*hand).cards[j];
 	    k=*kk;
+	    if(count==n-1)
+	      return 1;
 	  }}
-      if(count==n-1)
-	return 1;
     }
   return 0;
 }
