@@ -30,7 +30,7 @@ suit_t flush_suit(deck_t * hand) {
   int cl=0;
   int he=0;
   int di=0;
-  card_t *s=NULL;
+  card_t *s;
   card_t card;
   for(i=0;i<num;i++)
     {
@@ -42,7 +42,7 @@ suit_t flush_suit(deck_t * hand) {
 	cl++;
       else if(card.suit==HEARTS)
 	he++;
-      else
+      else if(card.suit==DIAMONDS)
 	di++;
     }
   if(sp==5)
