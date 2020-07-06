@@ -136,6 +136,8 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
   card_t k;
   kk=(*hand).cards[index];
   k=*kk;
+  if(k.suit!=fs)
+    return 0;
   int count=0;
   if(k.suit==fs)
     {
@@ -147,15 +149,14 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
 	  fcard=*fc;
 	  if(fcard.suit!=fs)
 	    continue;
-	  if(k.value-fcard.value==1){
+	    if(k.value-fcard.value==1){
 	    count++;
 	    kk=(*hand).cards[j];
+	    k=*kk;
 	  }}
       if(count==n-1)
 	return 1;
     }
-  else if(k.suit!=fs)
-  return 0;
   return 0;
 }
 int check_for_ace_low_straight(deck_t * hand,size_t index, suit_t fs)
