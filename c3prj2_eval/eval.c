@@ -95,8 +95,6 @@ ssize_t  find_secondary_pair(deck_t * hand,
   card_t multi=*l;
   for(j=0;j<num;j++)
     {
-      if(j>=match_idx && j<i)
-	continue;
       k=(*hand).cards[j];
       ke=*k;
       if((match_counts[j]>1) && (ke.value!=multi.value))
