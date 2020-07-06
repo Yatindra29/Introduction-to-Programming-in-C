@@ -117,25 +117,21 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
   card_t card2;
   for(size_t i=index;i<=num-2;i++)
     {
-      if(straight==(n-1))
-	{
-	  return 1;
-	  break;
-	}
-      else
-	{
       first=(*hand).cards[i];
       second=(*hand).cards[i+1];
       card1=*first;
       card2=*second;
       if(card1.value==card2.value)
 	continue;
-      else if(card1.value-card2.value!=1)
-	break;
       else if(card1.value-card2.value==1)
 	{
 	  straight++;
-	}}}}
+	  if(straight==n-1)
+	    return 1;
+	}
+      else
+	return 0;
+    }}
   card_t *kk;
   card_t k;
   kk=(*hand).cards[index];
@@ -145,7 +141,7 @@ int check_for_straight(deck_t *hand, size_t index, suit_t fs,int n)
     {
       card_t *fc;
       card_t fcard;
-      for(size_t j=index+1;j<(*hand).n_cards-1;j++)
+      for(size_t j=index+1;j<(*hand).n_cards;j++)
 	{
 	  fc=(*hand).cards[j];
 	  fcard=*fc;
@@ -175,20 +171,20 @@ int check_for_ace_low_straight(deck_t * hand,size_t index, suit_t fs)
       size_t i=index+1;
       card_t *pp;
       card_t c;
-      for(size_t j=i;j<(*hand).n_cards;j++)
+      for(size_t j=i;j<(*hand).n_cards-3;j++)
 	{
 	  pp=(*hand).cards[j];
 	  c=*pp;
-	  if(c.value==5)
+	  check=check_for_straight(hand,j,fs,4);
+	  if(check==1 && c.value==5)
 	    {
-	      check=check_for_straight(hand,j,fs,4);
-	      break;
-	    }}
-      if(check==1)
-	return -1;
-      else
+	      if(fs==NUM_SUITS)
+		return 1;
+	      if(ca.suit==fs)
+		return 1;
+	    }}}
 	return 0;
-    }}
+    }
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   int a1=check_for_ace_low_straight(hand,index,fs);
   int a2=check_for_straight(hand,index,fs,5);
