@@ -1,4 +1,4 @@
-Grading at Mon Jul  6 13:43:11 UTC 2020
+Grading at Mon Jul  6 13:52:28 UTC 2020
 Compiling your code
 rm -f test poker cards.o my-test-main.o *~
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
@@ -41,7 +41,7 @@ Line_87_did_not_match
 Line_95_did_not_match
 Line_96_did_not_match
 Line_107_did_not_match
-Line_115_did_not_match
+Line_120_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -168,16 +168,16 @@ Hand 2:								Hand 2:
 --------							--------
 Jh 0s 9c 8s 7c 6c 5d 						Jh 0s 9c 8s 7c 6c 5d 
  - No flush							 - No flush
- - Straight at index 0					      <
+ - Straight at index 0						 - Straight at index 0
  - Straight at index 1					      <
  - Straight at index 2					      <
  - The most of a kind is 1 of a kind (at index 0 / value J)	 - The most of a kind is 1 of a kind (at index 0 / value J)
  - No secondary pair						 - No secondary pair
- - evaluate_hand's ranking: STRAIGHT			      |	 - evaluate_hand's ranking: NOTHING
+ - evaluate_hand's ranking: STRAIGHT				 - evaluate_hand's ranking: STRAIGHT
  - 5 cards used for hand: Jh 0s 9c 8s 7c 			 - 5 cards used for hand: Jh 0s 9c 8s 7c 
 Comparison : 							Comparison : 
 --------------							--------------
-Tie								Tie
+Tie							      |	Hand 2 wins!
 ============================					============================
 Testcase 6: Trying hands with flushes
  Checking the output 
@@ -875,20 +875,22 @@ Testcase 9: Trying hands with straight flushes
 Line_7_did_not_match
 Line_15_did_not_match
 Line_24_did_not_match
-Line_27_did_not_match
-Line_32_did_not_match
-Line_35_did_not_match
-Line_47_did_not_match
-Line_55_did_not_match
-Line_67_did_not_match
-Line_68_did_not_match
-Line_72_did_not_match
-Line_75_did_not_match
-Line_76_did_not_match
-Line_79_did_not_match
-Line_87_did_not_match
-Line_95_did_not_match
-Line_96_did_not_match
+Line_25_did_not_match
+Line_28_did_not_match
+Line_33_did_not_match
+Line_34_did_not_match
+Line_37_did_not_match
+Line_49_did_not_match
+Line_57_did_not_match
+Line_69_did_not_match
+Line_70_did_not_match
+Line_74_did_not_match
+Line_77_did_not_match
+Line_78_did_not_match
+Line_81_did_not_match
+Line_89_did_not_match
+Line_97_did_not_match
+Line_98_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -917,23 +919,23 @@ Hand 1:								Hand 1:
 --------							--------
 As Ks Qs Js 0s 9s 8s 						As Ks Qs Js 0s 9s 8s 
  - Flush in suit s					      |	 - No flush
- - Straight flush at index 0				      <
+ - Straight flush at index 0				      |	 - Straight at index 0
  - Straight flush at index 1				      <
  - Straight flush at index 2				      <
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: NOTHING
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: STRAIGHT
  - 5 cards used for hand: As Ks Qs Js 0s 			 - 5 cards used for hand: As Ks Qs Js 0s 
 Hand 2:								Hand 2:
 --------							--------
 Kh Qh Jh 0h 9h 8h 7h 						Kh Qh Jh 0h 9h 8h 7h 
  - Flush in suit h					      |	 - No flush
- - Straight flush at index 0				      <
+ - Straight flush at index 0				      |	 - Straight at index 0
  - Straight flush at index 1				      <
  - Straight flush at index 2				      <
  - The most of a kind is 1 of a kind (at index 0 / value K)	 - The most of a kind is 1 of a kind (at index 0 / value K)
  - No secondary pair						 - No secondary pair
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: NOTHING
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: STRAIGHT
  - 5 cards used for hand: Kh Qh Jh 0h 9h 			 - 5 cards used for hand: Kh Qh Jh 0h 9h 
 Comparison : 							Comparison : 
 --------------							--------------
