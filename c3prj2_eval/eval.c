@@ -149,7 +149,7 @@ int check_for_ace_low_straight(deck_t * hand,size_t index, suit_t fs)
   card_t *point;
   point=(*hand).cards[index];
   card_t ca=*point;
-  int check;
+  int check=0;
   if(ca.value!=VALUE_ACE)
     return 0;
   else
