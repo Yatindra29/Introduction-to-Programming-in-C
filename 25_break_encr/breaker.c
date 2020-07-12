@@ -29,7 +29,7 @@ char frequency_count(FILE *f)
 	  if(letters[i]==letters[k])
 	    count++;
 	}
-      if(count>max}
+      if(count>max)
       {
 	max=count;
 	pos=i;
