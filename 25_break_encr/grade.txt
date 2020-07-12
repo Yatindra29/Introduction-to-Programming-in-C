@@ -1,15 +1,7 @@
-Grading at Sun Jul 12 07:22:20 UTC 2020
+Grading at Sun Jul 12 07:35:38 UTC 2020
 Attempting to compile breaker.c 
 cc     breaker.c   -o breaker
-testcase1 passed
-#################################################
-testcase2:
-valgrind reported memory errors or your program ran too long
-#################################################
-testcase3:
-valgrind reported memory errors or your program ran too long
-#################################################
-testcase4:
-valgrind reported memory errors or your program ran too long
+<builtin>: recipe for target 'breaker' failed
+The code did not compile!
 
 Overall Grade: F
