@@ -19,25 +19,21 @@ char frequency_count(FILE *f)
       j++;
       }}
   int u=j;
-  int count[u];
-  for(int x=0;x<u;x++)
-    count[x]=0;
+  int max=0;
+  int pos=0;
+  int count=0;
   for(int i=0;i<u;i++)
     {
       for(int k=0;k<u;k++)
 	{
 	  if(letters[i]==letters[k])
-	    count[i]++;
-	}}
-  int max=0;
-  int pos=0;
-  for(int l=0;l<u;l++)
-    {
-      if(count[l]>max)
-	{
-	  max=count[l];
-	  pos=l;
-	}}
+	    count++;
+	}
+      if(count>max}
+      {
+	max=count;
+	pos=i;
+      }}
   return letters[pos];
 }
 int decrypt(FILE *f)
