@@ -8,7 +8,7 @@ char frequency_count(FILE *f)
   if(f==NULL)
     fprintf(stderr,"Invalid file opening");
   int c;
-  char letters[1000];
+  char letters[10000];
   int j=0;
   while(c=fgetc(f)!=EOF)
     {
