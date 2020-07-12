@@ -42,7 +42,7 @@ int decrypt(FILE *f)
   int r=(int) repeat;
   char e='e';
   int asci=(int) e;
-  int diff=r-e;
+  int diff=r-asci;
   if(diff<0)
     diff+=26;
   return diff;
