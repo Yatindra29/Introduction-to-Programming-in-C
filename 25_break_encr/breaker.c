@@ -48,11 +48,11 @@ int decrypt(FILE *f)
   return diff;
 }
 int main(int argc, char ** argv){
-  if(argc!=1){
+  if(argc!=2){
     fprintf(stderr,"Invalid number of arguments \n");
     return EXIT_FAILURE;
   }
-  FILE *f=fopen(argv[0],"r");
+  FILE *f=fopen(argv[1],"r");
   if(f==NULL){
     fprintf(stderr,"Can't open file \n");
     return EXIT_FAILURE;
