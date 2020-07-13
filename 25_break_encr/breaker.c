@@ -22,9 +22,9 @@ char frequency_count(FILE *f)
   int max=0;
   int pos=0;
   int count=0;
-  for(int i=0;i<u/2;i++)
+  for(int i=0;i<u/10;i++)
     {
-      for(int k=0;k<u/2;k++)
+      for(int k=0;k<u/10;k++)
 	{
 	  if(letters[i]==letters[k])
 	    count++;
