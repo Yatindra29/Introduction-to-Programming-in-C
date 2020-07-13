@@ -3,11 +3,9 @@
 #include <ctype.h>
 //decrypt returns the value of key
 //frequency_count returns the character with the highest frequency
-char frequency_count(FILE *f)
+int decrypt(FILE *f)
 {
-  if(f==NULL)
-    fprintf(stderr,"Invalid file opening");
-  int c;
+  char c;
   int letters[26];
   for(int z=0;z<26;z++)
     letters[z]=0;
@@ -15,28 +13,25 @@ char frequency_count(FILE *f)
     {
       if(isalpha(c)){
 	c=tolower(c);
-	letters[c-97]++;
+	c-='a';
+	int ch=(int) c;
+	letters[ch]++;
       }}
   int max=0;
-  char to_return=' ';
+  int pos=-1;
   for(int i=0;i<26;i++)
     {
       if(letters[i]>max)
 	{
 	  max=letters[i];
-	  to_return=(char) (i+97);
+	  pos=i;
 	}}
-  return to_return;
-}
-int decrypt(FILE *f)
-{
-  char repeat=frequency_count(f);
-  int r=(int) repeat;
+  int r=pos;
   char e='e';
   int asci=(int) e;
-  int diff=r-asci;
+  int diff=r-asci+97;
   if(diff<0)
-    diff+=26;
+  diff+=26;
   return diff;
 }
 int main(int argc, char ** argv){
@@ -49,12 +44,13 @@ int main(int argc, char ** argv){
     fprintf(stderr,"Can't open file \n");
     return EXIT_FAILURE;
   }
-  int key=-1;
-  key=decrypt(f);
-  if(key==-1)
-    fprintf(stderr,"Invalid decryption \n");
-  else
+  else{
+  int key=decrypt(f);
     printf("%d",key);
+  if(fclose(f)!=0){
+    perror("Failed to close the input file\n");
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
-}
+  }}
   
