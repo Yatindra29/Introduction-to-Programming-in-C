@@ -8,31 +8,25 @@ char frequency_count(FILE *f)
   if(f==NULL)
     fprintf(stderr,"Invalid file opening");
   int c;
-  char letters[26];
+  int letters[26];
+  for(int z=0;z<26;z++)
+    letters[z]=0;
   while(c=fgetc(f)!=EOF)
     {
       if(isalpha(c)){
 	c=tolower(c);
-      char ch=(char) c;
-      letters[c-97]=ch;
+	letters[c-97]++;
       }}
   int max=0;
-  int pos=0;
-  int count=0;
+  char to_return=' ';
   for(int i=0;i<26;i++)
     {
-      count=0;
-      for(int k=0;k<26;k++)
+      if(letters[i]>max)
 	{
-	  if(letters[i]==letters[k])
-	    count++;
-	}
-      if(count>max)
-      {
-	max=count;
-	pos=i;
-      }}
-  return letters[pos];
+	  max=letters[i];
+	  to_return=(char) (i+97);
+	}}
+  return to_return;
 }
 int decrypt(FILE *f)
 {
