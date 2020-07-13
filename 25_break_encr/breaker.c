@@ -8,24 +8,21 @@ char frequency_count(FILE *f)
   if(f==NULL)
     fprintf(stderr,"Invalid file opening");
   int c;
-  char letters[10000];
-  int j=0;
+  char letters[26];
   while(c=fgetc(f)!=EOF)
     {
       if(isalpha(c)){
 	c=tolower(c);
       char ch=(char) c;
-      letters[j]=ch;
-      j++;
+      letters[c-97]=ch;
       }}
-  int u=j;
   int max=0;
   int pos=0;
   int count=0;
-  for(int i=0;i<u;i++)
+  for(int i=0;i<26;i++)
     {
       count=0;
-      for(int k=0;k<u;k++)
+      for(int k=0;k<26;k++)
 	{
 	  if(letters[i]==letters[k])
 	    count++;
