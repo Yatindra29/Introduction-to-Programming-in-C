@@ -1,15 +1,15 @@
-Grading at Sun Jul 12 07:42:25 UTC 2020
+Grading at Mon Jul 13 08:07:03 UTC 2020
 Attempting to compile breaker.c 
 cc     breaker.c   -o breaker
-testcase1 passed
+-75valgrind reported memory errors
 #################################################
 testcase2:
-valgrind reported memory errors or your program ran too long
+testcase2 failed
 #################################################
 testcase3:
-valgrind reported memory errors or your program ran too long
+testcase3 failed
 #################################################
 testcase4:
-valgrind reported memory errors or your program ran too long
+testcase4 failed
 
 Overall Grade: F
