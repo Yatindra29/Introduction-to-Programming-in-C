@@ -5,7 +5,7 @@
 //frequency_count returns the character with the highest frequency
 int decrypt(FILE *f)
 {
-  char c;
+  int c;
   int letters[26];
   for(int z=0;z<26;z++)
     letters[z]=0;
@@ -14,11 +14,10 @@ int decrypt(FILE *f)
       if(isalpha(c)){
 	c=tolower(c);
 	c-='a';
-	int ch=(int) c;
-	letters[ch]++;
+	letters[c]++;
       }}
   int max=0;
-  int pos=-1;
+  int pos=0;
   for(int i=0;i<26;i++)
     {
       if(letters[i]>max)
@@ -26,13 +25,11 @@ int decrypt(FILE *f)
 	  max=letters[i];
 	  pos=i;
 	}}
-  int r=pos;
-  char e='e';
-  int asci=(int) e;
-  int diff=r-asci+97;
-  if(diff<0)
-  diff+=26;
-  return diff;
+  int k=0;
+  if(pos>=('e'-'a')) k=pos-('e'-'a');
+  else
+    k=(26-('e'-'a'))+pos;
+  return k;
 }
 int main(int argc, char ** argv){
   if(argc!=2){
