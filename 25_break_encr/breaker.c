@@ -29,7 +29,7 @@ int decrypt(FILE *f){
   int diff=r-asci+97;
   if(diff<0)
     diff+=26;
-  return r;
+  return diff;
 }
 int main(int argc, char ** argv){
   if(argc!=2){
