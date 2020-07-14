@@ -1,4 +1,4 @@
-Grading at Mon Jul 13 15:05:44 UTC 2020
+Grading at Tue Jul 14 08:57:58 UTC 2020
 Attempting to compile breaker.c 
 cc     breaker.c   -o breaker
 testcase1 passed
@@ -7,7 +7,7 @@ testcase2:
 testcase2 failed
 #################################################
 testcase3:
-testcase3 failed
+testcase3 passed
 #################################################
 testcase4:
 testcase4 failed
