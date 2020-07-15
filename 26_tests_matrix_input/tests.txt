@@ -1,0 +1,18 @@
+special.txt
+
+number.txt
+tests.txt
+doesnotexxist.txt
+less.txt
+7 7
+op op
+wrong.txt
+characters.txt
+rand.txt
+n255.txt
+extra.txt
+new
+ls
+emacs
+one.txt
+
