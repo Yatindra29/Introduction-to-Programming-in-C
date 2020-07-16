@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 void rotate(char matrix[10][10])
 {
@@ -53,7 +54,13 @@ int main(int argc,char ** argv){
       printf("Line is too long");
       return EXIT_FAILURE;
     }
-    if(strchr(line,'\n')<10){
+    int count=0;
+    for(int i=0;i<10;i++)
+      {
+	if(line[i]!='\0')
+	  count++;
+      }
+    if(count<10){
       printf("Line is too short");
       return EXIT_FAILURE;
     }
