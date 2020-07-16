@@ -79,6 +79,10 @@ int main(int argc,char ** argv){
     ch=fgetc(f);
   }
   fclose(f);
+  if(row<10){
+    fprintf(stderr,"Less number of rows");
+    return EXIT_FAILURE;
+  }
   rotate(matrix);
   return EXIT_SUCCESS;
 }
