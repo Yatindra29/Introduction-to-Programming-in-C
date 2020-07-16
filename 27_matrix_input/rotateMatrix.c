@@ -55,12 +55,12 @@ int main(int argc,char ** argv){
       return EXIT_FAILURE;
     }
     int count=0;
-    for(int i=0;i<10;i++)
+    for(int i=0;i<12;i++)
       {
-	if(line[i]!='\0')
+	if(line[i]=='\0')
 	  count++;
       }
-    if(count<10){
+    if(count>1){
       printf("Line is too short");
       return EXIT_FAILURE;
     }
@@ -72,7 +72,7 @@ int main(int argc,char ** argv){
     x++;
   }
     else{
-      printf("Line is too long");
+      printf("File has extra lines");
     }}
   rotate(matrix);
   return EXIT_SUCCESS;
