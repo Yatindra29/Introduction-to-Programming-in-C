@@ -53,6 +53,10 @@ int main(int argc,char ** argv){
       printf("Line is too long");
       return EXIT_FAILURE;
     }
+    if(strchr(line,'\n')<10){
+      printf("Line is too short");
+      return EXIT_FAILURE;
+    }
     for(int j=0;j<10;j++)
       {
 	matrix[x][j]=line[j];
