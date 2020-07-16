@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
+
 void rotate(char matrix[10][10])
 {
   char temp[10][10];
@@ -46,34 +47,38 @@ int main(int argc,char ** argv){
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  char matrix[10][10];
-  char line[12];
-  int x=0;
-  while(fgets(line,12,f)!=NULL){
-    if (strchr(line,'\n')==NULL){
-      printf("Line is too long");
-      return EXIT_FAILURE;
-    }
-    int count=0;
-    for(int i=0;i<12;i++)
-      {
-	if(line[i]=='\0')
-	  count++;
-      }
-    if(count>1){
-      printf("Line is too short");
-      return EXIT_FAILURE;
-    }
-    if(x<10){
-    for(int j=0;j<10;j++)
-      {
-	matrix[x][j]=line[j];
-      }
-    x++;
+  int ch=fgetc(f);
+  if(ch==EOF){
+    fprintf(stderr,"Empty file");
+    return EXIT_FAILURE;
   }
+  char matrix[10][10];
+  int row=0;
+  int column=0;
+  while(ch!=EOF){
+    if(row>9){
+      fprintf(stderr,"Extra rows");
+      return EXIT_FAILURE;
+    }
+    if(column==10){
+      column=0;
+      row++;
+      if(ch!='\n'){
+	fprintf(stderr,"Line too long");
+	return EXIT_FAILURE;
+      }
+    }
     else{
-      printf("File has extra lines");
-    }}
+      if(ch=='\n'){
+	fprintf(stderr,"Line too short");
+	return EXIT_FAILURE;
+      }
+      matrix[row][column]=ch;
+      column++;
+    }
+    ch=fgetc(f);
+  }
+  fclose(f);
   rotate(matrix);
   return EXIT_SUCCESS;
 }
