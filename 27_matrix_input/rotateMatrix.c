@@ -64,12 +64,16 @@ int main(int argc,char ** argv){
       printf("Line is too short");
       return EXIT_FAILURE;
     }
+    if(x<10){
     for(int j=0;j<10;j++)
       {
 	matrix[x][j]=line[j];
       }
     x++;
   }
+    else{
+      printf("Line is too long");
+    }}
   rotate(matrix);
   return EXIT_SUCCESS;
 }
