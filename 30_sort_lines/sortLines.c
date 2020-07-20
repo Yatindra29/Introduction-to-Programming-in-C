@@ -43,6 +43,7 @@ int multiple_arguments(char **array_of_strings, int number_of_strings){
   int j=0;
   for(int i=1;i<=number_of_strings;i++)
     {
+      to_be_sorted=NULL;
       line=NULL;
       Size=0;
       j=0;
