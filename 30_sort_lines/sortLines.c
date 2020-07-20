@@ -19,9 +19,8 @@ int arg1(){
   char **to_be_sorted=NULL;
   char *Line=NULL;
   size_t size=0;
-  int len=0;
   int i=0;
-  while((len=getline(&Line,&size,stdin))>=0){
+  while(getline(&Line,&size,stdin)>=0){
     to_be_sorted=realloc(to_be_sorted,(i+1)* sizeof(*to_be_sorted));
     to_be_sorted[i]=Line;
      Line=NULL;
@@ -41,13 +40,11 @@ int multiple_arguments(char **array_of_strings, int number_of_strings){
   char **to_be_sorted=NULL;
   char *line=NULL;
   size_t Size=0;
-  int len=0;
   int j=0;
   for(int i=1;i<=number_of_strings;i++)
     {
       line=NULL;
       Size=0;
-      len=0;
       j=0;
       FILE *f=fopen(array_of_strings[i],"r");
       if(f==NULL){
@@ -55,8 +52,8 @@ int multiple_arguments(char **array_of_strings, int number_of_strings){
 	return EXIT_FAILURE;
       }
       else{
-	while((len=getline(&line,&Size,f))>=0){
-	  to_be_sorted=realloc(to_be_sorted,(i+1)* sizeof(*to_be_sorted));
+	while(getline(&line,&Size,f)>=0){
+	  to_be_sorted=realloc(to_be_sorted,(j+1)* sizeof(*to_be_sorted));
 	  to_be_sorted[j]=line;
 	   line=NULL;
 	  j++;
@@ -66,8 +63,9 @@ int multiple_arguments(char **array_of_strings, int number_of_strings){
 	  for(int k=0;k<j;k++){
 	    printf("%s",to_be_sorted[k]);
 	    free(to_be_sorted[k]);
-	  }}
+	  }
       free(to_be_sorted);
+      }
       if(fclose(f)!=0){
 	perror("Unable to close file");
 	return EXIT_FAILURE;
