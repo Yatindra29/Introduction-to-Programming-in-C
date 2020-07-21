@@ -42,7 +42,26 @@ void addRandomMine(board_t * b) {
 
 board_t * makeBoard(int w, int h, int numMines) {
   //WRITE ME!
-  return NULL;
+  board_t *prep_board=malloc(sizeof(*prep_board));
+  (*prep_board).width=w;
+  (*prep_board).height=h;
+  (*prep_board).totalMines=numMines;
+  (*prep_board).board=malloc(h*(sizeof(*(*prep_board).board)));
+  int *curr=NULL;
+  for(int y=0;y<h;y++){
+    curr=malloc(w * sizeof(*curr));
+    for(int x=0;x<w;x++){
+      curr[x]=UNKNOWN;
+    }
+    (*prep_board).board[y]=curr;
+    curr=NULL;
+    free(curr);
+  }
+  for(int i=0;i<numMines;i++)
+    {
+      addRandomMine(prep_board);
+    }
+  return prep_board;
 }
 void printBoard(board_t * b) {    
   int found = 0;
@@ -94,9 +113,56 @@ void printBoard(board_t * b) {
   }
   printf("\nFound %d of %d mines\n", found, b->totalMines);
 }
+int checkvalid(int x, int y, int w,int h){
+  if(((x>=0) &&(x<w)) &&((y>=0) && (y<h)))
+    return 1;
+  else return 0;
+}
 int countMines(board_t * b, int x, int y) {
+  int count=0;
+  int x1=x;
+  int y1=y;
+  x1=x-1;
+  y1=y-1;
+  int w=(*b).width;
+  int h=(*b).height;
+  if(checkvalid(x1,y1,w,h)){
+      if(IS_MINE((*b).board[y1][x1]))
+      count++;
+    }
+    y1=y;
+    if(checkvalid(x1,y1,w,h)){
+	if(IS_MINE((*b).board[y1][x1]))
+	  count++;
+      }
+      y1=y+1;
+      if(checkvalid(x1,y1,w,h)){
+	  if(IS_MINE((*b).board[y1][x1])) count++;
+	}
+	x1=x;
+	y1=y-1;
+	if(checkvalid(x1,y1,w,h)){
+	    if(IS_MINE((*b).board[y1][x1])) count++;
+	  }
+	  y1=y+1;
+	  if(checkvalid(x1,y1,w,h)){
+	      if(IS_MINE((*b).board[y1][x1])) count++;
+	    }
+	    x1=x+1;
+	    y1=y-1;
+	    if(checkvalid(x1,y1,w,h)){
+		if(IS_MINE((*b).board[y1][x1])) count++;
+	      }
+	      y1=y;
+	      if(checkvalid(x1,y1,w,h)){
+		  if(IS_MINE((*b).board[y1][x1])) count++;
+		}
+		y1=y+1;
+		if(checkvalid(x1,y1,w,h)){
+		    if(IS_MINE((*b).board[y1][x1])) count++;
+		  }
   //WRITE ME!
-  return 0;
+  return count;
 }
 int click (board_t * b, int x, int y) {
   if (x < 0 || x >= b->width ||
@@ -118,11 +184,25 @@ int click (board_t * b, int x, int y) {
 }
 
 int checkWin(board_t * b) {
+  for(int i=0;i<(*b).width;i++)
+    {
+      for(int j=0;j<(*b).height;j++)
+	{
+	  if((*b).board[i][j]==UNKNOWN)
+	    return 0;
+	}}
   //WRITE ME!
-  return 0;
+  return 1;
 }
 
 void freeBoard(board_t * b) {
+  int h=(*b).height;
+  int **curr=(*b).board;
+  for(int i=0;i<h;i++){
+    free(curr[i]);
+  }
+  free(curr);
+  free(b);
   //WRITE ME!
 }
 
