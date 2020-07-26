@@ -69,16 +69,21 @@ char *get_value(char *text){
 }
 void freeKVs(kvarray_t * pairs) {
   //WRITE ME
-  kvpair_t *curr=NULL;
+  // kvpair_t *curr=NULL;
   for(int i=0;i<(*pairs).size;i++){
-  curr=(*pairs).arr[i];
-  free((*curr).key);
-  // free((*curr).value);
-  free(curr);
-   }
-  free((*pairs).arr);
+    // curr=(*pairs).arr[i];
+    // free((*curr).key);
+    // free((*curr).value);
+    // free(curr);
+    // }
+    // free((*pairs).arr);
       // free((*pairs).arr[i]);
- free(pairs);
+    // free(pairs);
+    free(pairs -> arr[i] -> key);
+    free(pairs -> arr[i]);
+  }
+  free(pairs -> arr);
+  free(pairs);
 }
 
 void printKVs(kvarray_t * pairs) {
