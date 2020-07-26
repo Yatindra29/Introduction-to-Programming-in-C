@@ -30,8 +30,7 @@ kvarray_t * readKVs(const char * fname) {
     (*to_return).size++;
     read=NULL;
     //(*to_fill).key=NULL;
-    // (*to_fill).value=NULL;
-    //free(to_fill);
+    //(*to_fill).value=NULL;
   }
   free(read);
   if(fclose(f)!=0){
@@ -52,7 +51,7 @@ char *get_key(char * text){
   // for(int i=0;i<size;i++){
   // free(to_return[i]);
   // }
-  //free(to_return);
+  free(to_return);
 }
 char *get_value(char *text){
   char eq='=';
@@ -65,13 +64,13 @@ void freeKVs(kvarray_t * pairs) {
   //WRITE ME
   kvpair_t *curr;
   for(int i=0;i<(*pairs).size;i++){
-    curr=(*pairs).arr[i];
-    free((*curr).key);
-    // free((*curr).value);
-    free(curr);
+  curr=(*pairs).arr[i];
+  free((*curr).key);
+  // free((*curr).value);
+  free(curr);
+   }
       // free((*pairs).arr[i]);
-}
-  free(pairs);
+ free(pairs);
 }
 
 void printKVs(kvarray_t * pairs) {
