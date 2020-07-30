@@ -41,10 +41,10 @@ void addCount(counts_t * c, const char * name) {
 void printCounts(counts_t * c, FILE * outFile) {
   //WRITE ME
   for(int i=0;i<(*c).size;i++){
-    fprintf(outFile,"%s:%d\n", c->arr[i]->str,c->arr[i]->count); 
+    fprintf(outFile,"%s: %d\n", c->arr[i]->str,c->arr[i]->count); 
   }
   if(c->count_unknown !=0){
-    fprintf(outFile,"<unknown>:%d", c->count_unknown);
+    fprintf(outFile,"<unknown> : %d\n", c->count_unknown);
   }
 }
 
