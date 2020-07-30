@@ -16,8 +16,8 @@ void addCount(counts_t * c, const char * name) {
   if(name==NULL){
     c->count_unknown++;
   }
-  
-  else{
+  else
+    {
     int i=0;
     int flag=0;
   for(i=0;i<(*c).size;i++){
@@ -30,7 +30,7 @@ void addCount(counts_t * c, const char * name) {
     (*c).arr=realloc((*c).arr, ((c->size)+1) *sizeof((*c).arr));
     one_count_t *con;
     con=malloc(sizeof(*con));
-    (*con).str=malloc(sizeof(strlen(name)+2));
+    (*con).str=malloc(strlen(name)+8);
     strcpy(con->str,name);
     (*con).count=1;
     (*c).arr[i]=con;
