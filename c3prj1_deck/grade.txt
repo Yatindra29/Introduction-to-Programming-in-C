@@ -1,14 +1,21 @@
-Grading at Tue Jun 30 18:58:30 UTC 2020
+Grading at Sat Aug  1 08:40:01 UTC 2020
 Compiling deck.c
-Compiling cards.c
-Linking cards.o deck.o deck-c4.o and the grader's .o file
-Checking the output of all the functions other than shuffle
-Your file matched the expected output
- - Those functions seem to work!
-Checking your shuffle results with a 6 card hand...
-  Least common hand: 0.131700%
-  Most  common hand: 0.146250%
-  Perfectly even is: 0.138888%
- Excellent!
+In file included from /usr/include/stdlib.h:32:0,
+                 from deck.c:2:
+deck.c: In function ‘make_deck_exclude’:
+deck.c:78:16: error: invalid initializer
+   card_t check=NULL;
+                ^
+deck.c: In function ‘build_remaining_deck’:
+deck.c:99:25: error: incompatible type for argument 2 of ‘add_card_to’
+  add_card_to(to_exclude,(*placeholder).cards[j])
+                         ^
+deck.c:63:6: note: expected ‘card_t {aka struct card_tag}’ but argument is of type ‘card_t * {aka struct card_tag *}’
+ void add_card_to(deck_t * deck, card_t c){
+      ^
+deck.c:100:4: error: expected ‘;’ before ‘}’ token
+    }}
+    ^
+Could not compile your deck.c!
 
-Overall Grade: A
+Overall Grade: FAILED
