@@ -75,7 +75,7 @@ deck_t * make_deck_exclude(deck_t * excluded_cards){
   deck_t *new_deck=malloc(sizeof(*new_deck));
   (*new_deck).cards=NULL;
   (*new_deck).n_cards=0;
-  card_t check=NULL;
+  card_t check;
   for(int i=0;i<52;i++){
     check=card_from_num(i);
     if(deck_contains(excluded_cards,check)){
@@ -96,7 +96,7 @@ deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands){
   for(int i=0;i<n_hands;i++){
     placeholder=hands[i];
     for(int j=0;j<(*placeholder).n_cards;j++){
-	add_card_to(to_exclude,(*placeholder).cards[j])
+      add_card_to(to_exclude,*((*placeholder).cards[j]));
 	  }}
   final_deck=make_deck_exclude(to_exclude);
   return final_deck;
