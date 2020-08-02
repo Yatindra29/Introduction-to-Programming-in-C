@@ -100,7 +100,7 @@ deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands){
 	  }}
   final_deck=make_deck_exclude(to_exclude);
   return final_deck;
-  // free(to_exclude);
+   free(to_exclude);
 }
 void free_deck(deck_t * deck){
   for(int i=0;i<(*deck).n_cards;i++){
