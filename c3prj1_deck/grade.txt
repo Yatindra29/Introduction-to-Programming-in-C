@@ -1,21 +1,23 @@
-Grading at Sat Aug  1 08:40:01 UTC 2020
+Grading at Sun Aug  2 09:26:59 UTC 2020
 Compiling deck.c
-In file included from /usr/include/stdlib.h:32:0,
-                 from deck.c:2:
-deck.c: In function ‘make_deck_exclude’:
-deck.c:78:16: error: invalid initializer
-   card_t check=NULL;
-                ^
-deck.c: In function ‘build_remaining_deck’:
-deck.c:99:25: error: incompatible type for argument 2 of ‘add_card_to’
-  add_card_to(to_exclude,(*placeholder).cards[j])
-                         ^
-deck.c:63:6: note: expected ‘card_t {aka struct card_tag}’ but argument is of type ‘card_t * {aka struct card_tag *}’
- void add_card_to(deck_t * deck, card_t c){
-      ^
-deck.c:100:4: error: expected ‘;’ before ‘}’ token
-    }}
-    ^
-Could not compile your deck.c!
+Compiling cards.c
+Linking cards.o deck.o deck-c4.o and the grader's .o file
+deck-c4.o: In function `make_deck_exclude':
+/home/drew/poker/soln/deck-c4.c:7: multiple definition of `make_deck_exclude'
+deck.o:deck.c:(.text+0x1f0): first defined here
+deck-c4.o: In function `add_card_to':
+/home/drew/poker/soln/deck-c4.c:26: multiple definition of `add_card_to'
+deck.o:deck.c:(.text+0x190): first defined here
+deck-c4.o: In function `add_empty_card':
+/home/drew/poker/soln/deck-c4.c:36: multiple definition of `add_empty_card'
+deck.o:deck.c:(.text+0x1d0): first defined here
+deck-c4.o: In function `free_deck':
+/home/drew/poker/soln/deck-c4.c:46: multiple definition of `free_deck'
+deck.o:deck.c:(.text+0x3d0): first defined here
+deck-c4.o: In function `build_remaining_deck':
+/home/drew/poker/soln/deck-c4.c:55: multiple definition of `build_remaining_deck'
+deck.o:deck.c:(.text+0x2d0): first defined here
+collect2: error: ld returned 1 exit status
+Could not link your code!
 
 Overall Grade: FAILED
