@@ -70,6 +70,7 @@ card_t * add_empty_card(deck_t * deck){
   card_t *empty_card=malloc(sizeof(*empty_card));
   (*empty_card).value=0;
   (*empty_card).suit=0;
+  add_card_to(deck,*(empty_card));
   return empty_card;
 }
 deck_t * make_deck_exclude(deck_t * excluded_cards){
