@@ -27,7 +27,7 @@ void future_cards_from_deck(deck_t * deck, future_cards_t * fc){
     fprintf(stderr,"Unknown>Available cards to draw from");
     return;
   }
-  for(int i=0;i<=fc->n_decks;i++){
+  for(int i=0;i<fc->n_decks;i++){
     if(fc->decks[i].n_cards==0)
       continue;
     for(int x=0;x<fc->decks[i].n_cards;x++){
