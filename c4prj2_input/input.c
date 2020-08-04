@@ -38,7 +38,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t *to_return=malloc(sizeof(*to_return));
   to_return->cards=NULL;
   to_return->n_cards=0;
-  for(int i=0;i<len-1;i++){
+  for(int i=0;i<len;i++){
     if(isdigit(str[i]) && isalpha(str[i+1])){
 	card_t card=card_from_letters(str[i],str[i+1]);
 	add_card_to(to_return,card);
