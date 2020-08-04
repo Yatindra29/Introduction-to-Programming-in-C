@@ -15,18 +15,21 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   deck->n_cards=0;
   size_t sz=0;
   char *line=NULL;
+  int n=0;
   while(getline(&line,&sz,f)>=0){
     deck=hand_from_string(line,fc);
     if(deck!=NULL){
-      arr_of_deck=realloc(arr_of_deck, ((*n_hands)+1)*sizeof(**arr_of_deck));
-    arr_of_deck[*n_hands]=deck;
-    *n_hands++;
+      arr_of_deck=realloc(arr_of_deck, (n+1)*sizeof(**arr_of_deck));
+    arr_of_deck[n]=deck;
+    n++;
     }
     else{
       fprintf(stderr,"A hand consisted of less than 5 cards");
       return NULL;
     }
   }
+  free(line);
+  *n_hands=n;
   return arr_of_deck;
 }
 deck_t * hand_from_string(const char * str, future_cards_t * fc){
