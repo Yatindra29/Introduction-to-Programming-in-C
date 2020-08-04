@@ -1,0 +1,12 @@
+Grading at Tue Aug  4 18:17:01 UTC 2020
+Compiling cards.c -> cards.o
+Compiling deck.c -> deck.o
+Compiling input.c -> input.o
+input.c: In function ‘read_input’:
+input.c:23:5: error: value computed is not used [-Werror=unused-value]
+     *n_hands++;
+     ^
+cc1: all warnings being treated as errors
+Compilation of input.c failed
+
+Overall Grade: F
