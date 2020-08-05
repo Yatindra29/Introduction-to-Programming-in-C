@@ -41,15 +41,23 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 	i++;
       }
     else if(str[i]=='?' && isdigit(str[i+1])){
-      card_t *em=add_empty_card(to_return);
-      int index=str[i+1]-'0';
-      add_future_card(fc,index,em);
-      i++;
-    }
+       card_t *em=add_empty_card(to_return);
+       size_t index=str[i+1]-'0';
+       add_future_card(fc,index,em);
+       i++;
+      // i++;
+      // char num[strlen(str)];
+      // int n = 0;
+      // while (!((str[i] == '\n') || (str[i] == ' '))){
+      //	num[n] = str[i];
+      //	i++; n++;
+      // }
+      // num[n] = '\0';
+      // add_future_card(fc, atoi(num), add_empty_card(deck));
+    }}
       if(to_return->n_cards<5){
 	//	fprintf(stderr,"Less than 5 cards");
 	return NULL;
       }
-  }
   return to_return;
 }
