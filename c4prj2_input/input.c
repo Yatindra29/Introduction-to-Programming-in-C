@@ -40,6 +40,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 	add_card_to(to_return,card);
 	i++;
       }
+    else if ((str[i] == '\n') || (str[i] == ' ')) continue;
     else if(str[i]=='?' && isdigit(str[i+1])){
       // card_t *em=add_empty_card(to_return);
       // size_t index=str[i+1]-'0';
