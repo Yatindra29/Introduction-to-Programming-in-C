@@ -56,7 +56,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
         add_future_card(fc, atoi(num), add_empty_card(to_return));
     }}
       if(to_return->n_cards<5){
-	fprintf(stderr,"Less than 5 cards");
+	//fprintf(stderr,"Less than 5 cards");
 	return NULL;
       }
   return to_return;
