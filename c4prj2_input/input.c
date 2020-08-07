@@ -35,12 +35,14 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   to_return->cards=NULL;
   to_return->n_cards=0;
   for(int i=0;i<len;i++){
-    if(isdigit(str[i])){ //&& isalpha(str[i+1])){
+    if ((str[i] == '\n') || (str[i] == ' ')){
+      continue;
+    }
+    else if(isdigit(str[i]) && isalpha(str[i+1])){
 	card_t card=card_from_letters(str[i],str[i+1]);
 	add_card_to(to_return,card);
 	i++;
       }
-    else if ((str[i] == '\n') || (str[i] == ' ')) continue;
     else if(str[i]=='?' && isdigit(str[i+1])){
       // card_t *em=add_empty_card(to_return);
       // size_t index=str[i+1]-'0';
