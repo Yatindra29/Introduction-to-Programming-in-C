@@ -35,7 +35,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t *to_return=malloc(sizeof(*to_return));
   to_return->cards=NULL;
   to_return->n_cards=0;
-  for(int i=0;i<len;i++){
+  for(int i=0;i<len-1;i++){
     if ((str[i] == '\n') || (str[i] == ' ')){
       continue;
     }
