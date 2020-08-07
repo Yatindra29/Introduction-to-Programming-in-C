@@ -13,21 +13,21 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   deck_t **arr_of_deck=NULL;
   size_t sz=0;
   char *line=NULL;
-  size_t n=0;
+  size_t nm=0;
   while(getline(&line,&sz,f)>=0){
     deck_t *deck=hand_from_string(line,fc);
     if(deck==NULL)
       continue;
-    arr_of_deck=realloc(arr_of_deck, (n+1)*sizeof(*arr_of_deck));
-    arr_of_deck[n]=deck;
-    n++;
+    arr_of_deck=realloc(arr_of_deck, (nm+1)*sizeof(*arr_of_deck));
+    arr_of_deck[nm]=deck;
+    nm++;
       //fprintf(stderr,"A hand consisted of less than 5 cards");
       //return NULL;
       //continue;
       //}
   }
   free(line);
-  *n_hands=n;
+  *n_hands=nm;
   return arr_of_deck;
 }
 deck_t * hand_from_string(const char * str, future_cards_t * fc){
@@ -39,12 +39,12 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
     if ((str[i] == '\n') || (str[i] == ' ')){
       continue;
     }
-     if(isdigit(str[i]) && isalpha(str[i+1])){
+    else if(isdigit(str[i]) && isalpha(str[i+1])){
 	card_t card=card_from_letters(str[i],str[i+1]);
 	add_card_to(to_return,card);
 	i++;
       }
-     if(str[i]=='?' && isdigit(str[i+1])){
+     else if(str[i]=='?' && isdigit(str[i+1])){
       // card_t *em=add_empty_card(to_return);
       // size_t index=str[i+1]-'0';
       // add_future_card(fc,index,em);
