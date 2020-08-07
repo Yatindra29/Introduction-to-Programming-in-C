@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <assert.h>
 #include "cards.h"
 #include "deck.h"
 #include "eval.h"
@@ -14,13 +15,10 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   char *line=NULL;
   size_t n=0;
   while(getline(&line,&sz,f)>=0){
-    deck_t *deck=malloc(sizeof(*deck));
-    deck->cards=NULL;
-    deck->n_cards=0;
-    deck=hand_from_string(line,fc);
-    arr_of_deck=realloc(arr_of_deck, (n+1)*sizeof(*arr_of_deck));
+    deck_t *deck=hand_from_string(line,fc);
     if(deck==NULL)
       continue;
+    arr_of_deck=realloc(arr_of_deck, (n+1)*sizeof(*arr_of_deck));
     arr_of_deck[n]=deck;
     n++;
       //fprintf(stderr,"A hand consisted of less than 5 cards");
