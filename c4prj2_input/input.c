@@ -40,12 +40,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
       continue;
     }
     else{
-      if(isdigit(str[i]) && isalpha(str[i+1])){
-      card_t card=card_from_letters(str[i],str[i+1]);
-      add_card_to(to_return,card);
-      i++;
-    }
-    else if(str[i]=='?'){
+      if(str[i]=='?'){
       i++;
       char num[strlen(str)];
       int n = 0;
@@ -56,10 +51,15 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
       }
       num[n] = '\0';
       add_future_card(fc, atoi(num), add_empty_card(to_return));
-    }}}
+    }
+      else if(isdigit(str[i]) && isalpha(str[i+1])){
+	  card_t card=card_from_letters(str[i],str[i+1]);
+	  add_card_to(to_return,card);
+	  i++;
+	}
+    }}
   if(to_return->n_cards<5){
-    print_hand(to_return);
-    //fprintf(stderr,"Less than 5 cards\n");
+    fprintf(stderr,"Less than 5 cards\n");
     return NULL;
   }
   return to_return;
