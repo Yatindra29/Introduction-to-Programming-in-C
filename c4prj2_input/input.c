@@ -27,7 +27,7 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
     //}
   }
   free(line);
-  *n_hands=nm;
+  n_hands=&nm;
   return arr_of_deck;
 }
 deck_t * hand_from_string(const char * str, future_cards_t * fc){
