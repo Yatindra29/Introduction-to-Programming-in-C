@@ -27,7 +27,7 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
     //}
   }
   free(line);
-  n_hands=&nm;
+  *n_hands=nm;
   return arr_of_deck;
 }
 deck_t * hand_from_string(const char * str, future_cards_t * fc){
@@ -45,7 +45,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
       add_card_to(to_return,card);
       i++;
     }
-    else if(str[i]=='?' && isdigit(str[i+1])){
+    else if(str[i]=='?'){
       // card_t *em=add_empty_card(to_return);
       // size_t index=str[i+1]-'0';
       // add_future_card(fc,index,em);
