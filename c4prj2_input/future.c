@@ -31,9 +31,15 @@ void future_cards_from_deck(deck_t * deck, future_cards_t * fc){
     if(fc->decks[i].n_cards==0){
       continue;
     }
-    for(int x=0;x<fc->decks[i].n_cards;x++){
-      (*(fc->decks[i].cards[x])).value=(*(deck->cards[i])).value;
-      (*(fc->decks[i].cards[x])).suit=(*(deck->cards[i])).suit;
+    deck_t d;
+    card_t *c;
+    for(size_t i=0; i<fc->n_decks; i++){
+      c = deck->cards[i];
+      d = fc->decks[i];
+      for(size_t j=0; j<d.n_cards; j++){
+	(*(d.cards[j])).value = (*c).value;
+	(*(d.cards[j])).suit = (*c).suit;
+      }
     }}}
 
 
