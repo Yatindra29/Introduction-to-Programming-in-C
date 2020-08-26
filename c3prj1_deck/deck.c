@@ -42,7 +42,7 @@ void shuffle(deck_t * d){
   card_t *p=NULL;
   card_t *r=NULL;
   size_t n;
-  for(i=0;i<num/2;i++)
+  for(i=0;i<num/3;i++)
     {
       n=(rand() % num);
       p=(*d).cards[i];
