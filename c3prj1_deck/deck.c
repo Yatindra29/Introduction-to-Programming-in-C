@@ -95,17 +95,17 @@ deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands){
   deck_t *final_deck=malloc(sizeof(*final_deck));
   (*final_deck).cards=NULL;
   (*final_deck).n_cards=0;
-  deck_t *to_exclude=NULL;//malloc(sizeof(*to_exclude));
-  //(*to_exclude).cards=NULL;
-  //(*to_exclude).n_cards=0;
+  deck_t *to_exclude=malloc(sizeof(*to_exclude));
+  (*to_exclude).cards=NULL;
+  (*to_exclude).n_cards=0;
   for(int i=0;i<n_hands;i++){
     for(int j=0;j<hands[i]->n_cards;j++){
       add_card_to(to_exclude,*(hands[i]->cards[j]));
 	  }}
   final_deck=make_deck_exclude(to_exclude);
   return final_deck;
-  //free(to_exclude->cards);
-  //free(to_exclude);
+  free(to_exclude->cards);
+  free(to_exclude);
 }
 void free_deck(deck_t * deck){
   for(int i=0;i<(*deck).n_cards;i++){
