@@ -1,4 +1,4 @@
-Grading at Thu Aug 27 14:37:00 UTC 2020
+Grading at Thu Aug 27 14:48:12 UTC 2020
 Running 'make clean' to do a clean build of your project
 rm -rf *.o poker *~
 Running 'make poker OTHERFLAGS=-O3' to build your project
@@ -11,51 +11,366 @@ gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o main.o main.c
 gcc -o poker -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3 cards.o deck.o eval.o future.o input.o main.o
  - Starting with some Texas Hold'em hands
 Running a simulation with 20000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1499== Memcheck, a memory error detector
+==1499== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1499== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1499== Command: ./poker inp.txt 20000
+==1499== Parent PID: 1498
+==1499== 
+==1499== Invalid read of size 8
+==1499==    at 0x401326: add_card_to (deck.c:67)
+==1499==    by 0x401326: build_remaining_deck (deck.c:103)
+==1499==    by 0x400A13: main (main.c:56)
+==1499==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1499== 
+==1499== 
+==1499== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1499==  Access not within mapped region at address 0x8
+==1499==    at 0x401326: add_card_to (deck.c:67)
+==1499==    by 0x401326: build_remaining_deck (deck.c:103)
+==1499==    by 0x400A13: main (main.c:56)
+==1499==  If you believe this happened as a result of a stack
+==1499==  overflow in your program's main thread (unlikely but
+==1499==  possible), you can try to increase the size of the
+==1499==  main thread stack using the --main-stacksize= flag.
+==1499==  The main thread stack size used in this run was 8388608.
+==1499== 
+==1499== HEAP SUMMARY:
+==1499==     in use at exit: 1,024 bytes in 29 blocks
+==1499==   total heap usage: 53 allocs, 24 frees, 5,784 bytes allocated
+==1499== 
+==1499== LEAK SUMMARY:
+==1499==    definitely lost: 40 bytes in 3 blocks
+==1499==    indirectly lost: 160 bytes in 6 blocks
+==1499==      possibly lost: 0 bytes in 0 blocks
+==1499==    still reachable: 824 bytes in 20 blocks
+==1499==         suppressed: 0 bytes in 0 blocks
+==1499== Rerun with --leak-check=full to see details of leaked memory
+==1499== 
+==1499== For counts of detected and suppressed errors, rerun with: -v
+==1499== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Running a simulation with 25000 draws for 3 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1504== Memcheck, a memory error detector
+==1504== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1504== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1504== Command: ./poker inp.txt 25000
+==1504== Parent PID: 1503
+==1504== 
+==1504== Invalid read of size 8
+==1504==    at 0x401326: add_card_to (deck.c:67)
+==1504==    by 0x401326: build_remaining_deck (deck.c:103)
+==1504==    by 0x400A13: main (main.c:56)
+==1504==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1504== 
+==1504== 
+==1504== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1504==  Access not within mapped region at address 0x8
+==1504==    at 0x401326: add_card_to (deck.c:67)
+==1504==    by 0x401326: build_remaining_deck (deck.c:103)
+==1504==    by 0x400A13: main (main.c:56)
+==1504==  If you believe this happened as a result of a stack
+==1504==  overflow in your program's main thread (unlikely but
+==1504==  possible), you can try to increase the size of the
+==1504==  main thread stack using the --main-stacksize= flag.
+==1504==  The main thread stack size used in this run was 8388608.
+==1504== 
+==1504== HEAP SUMMARY:
+==1504==     in use at exit: 1,200 bytes in 38 blocks
+==1504==   total heap usage: 74 allocs, 36 frees, 6,224 bytes allocated
+==1504== 
+==1504== LEAK SUMMARY:
+==1504==    definitely lost: 40 bytes in 3 blocks
+==1504==    indirectly lost: 200 bytes in 6 blocks
+==1504==      possibly lost: 0 bytes in 0 blocks
+==1504==    still reachable: 960 bytes in 29 blocks
+==1504==         suppressed: 0 bytes in 0 blocks
+==1504== Rerun with --leak-check=full to see details of leaked memory
+==1504== 
+==1504== For counts of detected and suppressed errors, rerun with: -v
+==1504== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Running a simulation with 25000 draws for 3 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1509== Memcheck, a memory error detector
+==1509== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1509== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1509== Command: ./poker inp2.txt 25000
+==1509== Parent PID: 1508
+==1509== 
+==1509== Invalid read of size 8
+==1509==    at 0x401326: add_card_to (deck.c:67)
+==1509==    by 0x401326: build_remaining_deck (deck.c:103)
+==1509==    by 0x400A13: main (main.c:56)
+==1509==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1509== 
+==1509== 
+==1509== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1509==  Access not within mapped region at address 0x8
+==1509==    at 0x401326: add_card_to (deck.c:67)
+==1509==    by 0x401326: build_remaining_deck (deck.c:103)
+==1509==    by 0x400A13: main (main.c:56)
+==1509==  If you believe this happened as a result of a stack
+==1509==  overflow in your program's main thread (unlikely but
+==1509==  possible), you can try to increase the size of the
+==1509==  main thread stack using the --main-stacksize= flag.
+==1509==  The main thread stack size used in this run was 8388608.
+==1509== 
+==1509== HEAP SUMMARY:
+==1509==     in use at exit: 1,200 bytes in 38 blocks
+==1509==   total heap usage: 74 allocs, 36 frees, 6,224 bytes allocated
+==1509== 
+==1509== LEAK SUMMARY:
+==1509==    definitely lost: 40 bytes in 3 blocks
+==1509==    indirectly lost: 200 bytes in 6 blocks
+==1509==      possibly lost: 0 bytes in 0 blocks
+==1509==    still reachable: 960 bytes in 29 blocks
+==1509==         suppressed: 0 bytes in 0 blocks
+==1509== Rerun with --leak-check=full to see details of leaked memory
+==1509== 
+==1509== For counts of detected and suppressed errors, rerun with: -v
+==1509== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Running a simulation with 25000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1514== Memcheck, a memory error detector
+==1514== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1514== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1514== Command: ./poker inp2.txt 25000
+==1514== Parent PID: 1513
+==1514== 
+==1514== Invalid read of size 8
+==1514==    at 0x401326: add_card_to (deck.c:67)
+==1514==    by 0x401326: build_remaining_deck (deck.c:103)
+==1514==    by 0x400A13: main (main.c:56)
+==1514==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1514== 
+==1514== 
+==1514== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1514==  Access not within mapped region at address 0x8
+==1514==    at 0x401326: add_card_to (deck.c:67)
+==1514==    by 0x401326: build_remaining_deck (deck.c:103)
+==1514==    by 0x400A13: main (main.c:56)
+==1514==  If you believe this happened as a result of a stack
+==1514==  overflow in your program's main thread (unlikely but
+==1514==  possible), you can try to increase the size of the
+==1514==  main thread stack using the --main-stacksize= flag.
+==1514==  The main thread stack size used in this run was 8388608.
+==1514== 
+==1514== HEAP SUMMARY:
+==1514==     in use at exit: 1,024 bytes in 29 blocks
+==1514==   total heap usage: 53 allocs, 24 frees, 5,784 bytes allocated
+==1514== 
+==1514== LEAK SUMMARY:
+==1514==    definitely lost: 40 bytes in 3 blocks
+==1514==    indirectly lost: 160 bytes in 6 blocks
+==1514==      possibly lost: 0 bytes in 0 blocks
+==1514==    still reachable: 824 bytes in 20 blocks
+==1514==         suppressed: 0 bytes in 0 blocks
+==1514== Rerun with --leak-check=full to see details of leaked memory
+==1514== 
+==1514== For counts of detected and suppressed errors, rerun with: -v
+==1514== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Running a simulation with 80000 draws for 4 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Hand 3 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1519== Memcheck, a memory error detector
+==1519== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1519== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1519== Command: ./poker inp3.txt 80000
+==1519== Parent PID: 1518
+==1519== 
+==1519== Invalid read of size 8
+==1519==    at 0x401326: add_card_to (deck.c:67)
+==1519==    by 0x401326: build_remaining_deck (deck.c:103)
+==1519==    by 0x400A13: main (main.c:56)
+==1519==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1519== 
+==1519== 
+==1519== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1519==  Access not within mapped region at address 0x8
+==1519==    at 0x401326: add_card_to (deck.c:67)
+==1519==    by 0x401326: build_remaining_deck (deck.c:103)
+==1519==    by 0x400A13: main (main.c:56)
+==1519==  If you believe this happened as a result of a stack
+==1519==  overflow in your program's main thread (unlikely but
+==1519==  possible), you can try to increase the size of the
+==1519==  main thread stack using the --main-stacksize= flag.
+==1519==  The main thread stack size used in this run was 8388608.
+==1519== 
+==1519== HEAP SUMMARY:
+==1519==     in use at exit: 1,232 bytes in 44 blocks
+==1519==   total heap usage: 80 allocs, 36 frees, 6,280 bytes allocated
+==1519== 
+==1519== LEAK SUMMARY:
+==1519==    definitely lost: 40 bytes in 3 blocks
+==1519==    indirectly lost: 96 bytes in 3 blocks
+==1519==      possibly lost: 0 bytes in 0 blocks
+==1519==    still reachable: 1,096 bytes in 38 blocks
+==1519==         suppressed: 0 bytes in 0 blocks
+==1519== Rerun with --leak-check=full to see details of leaked memory
+==1519== 
+==1519== For counts of detected and suppressed errors, rerun with: -v
+==1519== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Running a simulation with 30000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1524== Memcheck, a memory error detector
+==1524== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1524== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1524== Command: ./poker inp.txt 30000
+==1524== Parent PID: 1523
+==1524== 
+==1524== Invalid read of size 8
+==1524==    at 0x401326: add_card_to (deck.c:67)
+==1524==    by 0x401326: build_remaining_deck (deck.c:103)
+==1524==    by 0x400A13: main (main.c:56)
+==1524==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1524== 
+==1524== 
+==1524== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1524==  Access not within mapped region at address 0x8
+==1524==    at 0x401326: add_card_to (deck.c:67)
+==1524==    by 0x401326: build_remaining_deck (deck.c:103)
+==1524==    by 0x400A13: main (main.c:56)
+==1524==  If you believe this happened as a result of a stack
+==1524==  overflow in your program's main thread (unlikely but
+==1524==  possible), you can try to increase the size of the
+==1524==  main thread stack using the --main-stacksize= flag.
+==1524==  The main thread stack size used in this run was 8388608.
+==1524== 
+==1524== HEAP SUMMARY:
+==1524==     in use at exit: 928 bytes in 26 blocks
+==1524==   total heap usage: 44 allocs, 18 frees, 5,520 bytes allocated
+==1524== 
+==1524== LEAK SUMMARY:
+==1524==    definitely lost: 40 bytes in 3 blocks
+==1524==    indirectly lost: 64 bytes in 3 blocks
+==1524==      possibly lost: 0 bytes in 0 blocks
+==1524==    still reachable: 824 bytes in 20 blocks
+==1524==         suppressed: 0 bytes in 0 blocks
+==1524== Rerun with --leak-check=full to see details of leaked memory
+==1524== 
+==1524== For counts of detected and suppressed errors, rerun with: -v
+==1524== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
  - Next, few Seven Card Stud hands
 Running a simulation with 30000 draws for 2 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1529== Memcheck, a memory error detector
+==1529== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1529== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1529== Command: ./poker inp.txt 30000
+==1529== Parent PID: 1528
+==1529== 
+==1529== Invalid read of size 8
+==1529==    at 0x401326: add_card_to (deck.c:67)
+==1529==    by 0x401326: build_remaining_deck (deck.c:103)
+==1529==    by 0x400A13: main (main.c:56)
+==1529==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1529== 
+==1529== 
+==1529== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1529==  Access not within mapped region at address 0x8
+==1529==    at 0x401326: add_card_to (deck.c:67)
+==1529==    by 0x401326: build_remaining_deck (deck.c:103)
+==1529==    by 0x400A13: main (main.c:56)
+==1529==  If you believe this happened as a result of a stack
+==1529==  overflow in your program's main thread (unlikely but
+==1529==  possible), you can try to increase the size of the
+==1529==  main thread stack using the --main-stacksize= flag.
+==1529==  The main thread stack size used in this run was 8388608.
+==1529== 
+==1529== HEAP SUMMARY:
+==1529==     in use at exit: 1,056 bytes in 32 blocks
+==1529==   total heap usage: 54 allocs, 22 frees, 6,064 bytes allocated
+==1529== 
+==1529== LEAK SUMMARY:
+==1529==    definitely lost: 40 bytes in 3 blocks
+==1529==    indirectly lost: 192 bytes in 9 blocks
+==1529==      possibly lost: 0 bytes in 0 blocks
+==1529==    still reachable: 824 bytes in 20 blocks
+==1529==         suppressed: 0 bytes in 0 blocks
+==1529== Rerun with --leak-check=full to see details of leaked memory
+==1529== 
+==1529== For counts of detected and suppressed errors, rerun with: -v
+==1529== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 Running a simulation with 40000 draws for 3 hands...
-    Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
-    Hand 2 was close enough to our answer
-    Test case passed!    
+Valgrind reported errors:
+==1534== Memcheck, a memory error detector
+==1534== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1534== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1534== Command: ./poker inp2.txt 40000
+==1534== Parent PID: 1533
+==1534== 
+==1534== Invalid read of size 8
+==1534==    at 0x401326: add_card_to (deck.c:67)
+==1534==    by 0x401326: build_remaining_deck (deck.c:103)
+==1534==    by 0x400A13: main (main.c:56)
+==1534==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1534== 
+==1534== 
+==1534== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1534==  Access not within mapped region at address 0x8
+==1534==    at 0x401326: add_card_to (deck.c:67)
+==1534==    by 0x401326: build_remaining_deck (deck.c:103)
+==1534==    by 0x400A13: main (main.c:56)
+==1534==  If you believe this happened as a result of a stack
+==1534==  overflow in your program's main thread (unlikely but
+==1534==  possible), you can try to increase the size of the
+==1534==  main thread stack using the --main-stacksize= flag.
+==1534==  The main thread stack size used in this run was 8388608.
+==1534== 
+==1534== HEAP SUMMARY:
+==1534==     in use at exit: 1,216 bytes in 42 blocks
+==1534==   total heap usage: 72 allocs, 30 frees, 6,536 bytes allocated
+==1534== 
+==1534== LEAK SUMMARY:
+==1534==    definitely lost: 40 bytes in 3 blocks
+==1534==    indirectly lost: 216 bytes in 10 blocks
+==1534==      possibly lost: 0 bytes in 0 blocks
+==1534==    still reachable: 960 bytes in 29 blocks
+==1534==         suppressed: 0 bytes in 0 blocks
+==1534== Rerun with --leak-check=full to see details of leaked memory
+==1534== 
+==1534== For counts of detected and suppressed errors, rerun with: -v
+==1534== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
  - Then one from a completely made up poker variant
 Running a simulation with 100000 draws for 6 hands...
 Valgrind reported errors:
-==1339== Memcheck, a memory error detector
-==1339== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==1339== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==1339== Command: ./poker whacky.txt 100000
-==1339== Parent PID: 1338
-==1339== 
+==1539== Memcheck, a memory error detector
+==1539== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1539== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1539== Command: ./poker whacky.txt 100000
+==1539== Parent PID: 1538
+==1539== 
+==1539== Invalid read of size 8
+==1539==    at 0x401326: add_card_to (deck.c:67)
+==1539==    by 0x401326: build_remaining_deck (deck.c:103)
+==1539==    by 0x400A13: main (main.c:56)
+==1539==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==1539== 
+==1539== 
+==1539== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==1539==  Access not within mapped region at address 0x8
+==1539==    at 0x401326: add_card_to (deck.c:67)
+==1539==    by 0x401326: build_remaining_deck (deck.c:103)
+==1539==    by 0x400A13: main (main.c:56)
+==1539==  If you believe this happened as a result of a stack
+==1539==  overflow in your program's main thread (unlikely but
+==1539==  possible), you can try to increase the size of the
+==1539==  main thread stack using the --main-stacksize= flag.
+==1539==  The main thread stack size used in this run was 8388608.
+==1539== 
+==1539== HEAP SUMMARY:
+==1539==     in use at exit: 1,648 bytes in 66 blocks
+==1539==   total heap usage: 126 allocs, 60 frees, 7,376 bytes allocated
+==1539== 
+==1539== LEAK SUMMARY:
+==1539==    definitely lost: 40 bytes in 3 blocks
+==1539==    indirectly lost: 240 bytes in 7 blocks
+==1539==      possibly lost: 0 bytes in 0 blocks
+==1539==    still reachable: 1,368 bytes in 56 blocks
+==1539==         suppressed: 0 bytes in 0 blocks
+==1539== Rerun with --leak-check=full to see details of leaked memory
+==1539== 
+==1539== For counts of detected and suppressed errors, rerun with: -v
+==1539== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
-Overall Grade: B
+Overall Grade: F
